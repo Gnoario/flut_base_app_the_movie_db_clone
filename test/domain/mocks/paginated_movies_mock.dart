@@ -18,8 +18,18 @@ class PaginatedMoviesMock {
     );
   }
 
+  String createDefaultTrendingMediaQuery() {
+    const language = Language.ptBR;
+    const timeWindow = TrendingTimeWindow.day;
+    return '/all/${timeWindow.nameSnakeCase}?language=${language.convertedType}';
+  }
+
   MovieFilter createRandomMovieFilter() {
     return faker.randomGenerator.element(MovieFilter.values);
+  }
+
+  TrendingTimeWindow createRandomTrendingTimeWindow() {
+    return faker.randomGenerator.element(TrendingTimeWindow.values);
   }
 
   Language createRandomLanguage() {
