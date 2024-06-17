@@ -18,6 +18,16 @@ extension EMediaType on MediaType {
     return action[this] ?? 'Desconhecido';
   }
 
+  String get dynamicUrl {
+    final action = {
+      MediaType.tv: 'tv',
+      MediaType.movie: 'movie',
+      MediaType.person: 'person',
+    };
+
+    return action[this] ?? 'unknown';
+  }
+
   static MediaType fromString(String value) {
     return EnumToString.fromString(MediaType.values, value) ??
         MediaType.unknown;
