@@ -88,6 +88,30 @@ void main() {
       ).called(1);
     });
 
+    test('Should send the correct query with default data to the datasource',
+        () async {
+      const language = Language.ptBR;
+      const movieFilter = MovieFilter.popular;
+      final pagination = paginatedMoviesMock.createPaginationMock();
+      when(
+        datasource(
+          query: anyNamed('query'),
+        ),
+      ).thenAnswer(
+        (_) async => paginatedMoviesMock.create(),
+      );
+
+      await usecase(
+        pagination: pagination,
+      );
+
+      var expectedQuery =
+          '/movie/${movieFilter.nameSnakeCase}?language=${language.convertedType}&page=${pagination.page}';
+      verify(
+        datasource(query: expectedQuery),
+      ).called(1);
+    });
+
     test('Should send the correct pagination and searchValue to the datasource',
         () async {
       final searchValue = paginatedMoviesMock.createRandomSearchValue();
