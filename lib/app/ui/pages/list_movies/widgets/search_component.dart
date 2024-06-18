@@ -1,6 +1,7 @@
 import 'package:flut_base_app_the_movie_db_clone/app/ui/components/components.dart';
 import 'package:flut_base_app_the_movie_db_clone/app/ui/pages/list_movies/list_movies_presenter.dart';
 import 'package:flut_base_app_the_movie_db_clone/shared/shared.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -26,7 +27,7 @@ class _SearchComponentState extends State<SearchComponent> {
     return Padding(
       padding: context.spacer.x.xs + context.spacer.top.xs,
       child: SizedBox(
-        height: 50,
+        height: kIsWeb ? 40 : 50,
         child: BasicField(
           labelText: 'Buscar por filmes...',
           initialValue: widget.initialValue,

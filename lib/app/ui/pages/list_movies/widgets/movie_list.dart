@@ -25,6 +25,14 @@ class _MovieListState extends State<MovieList> {
   int groupValue = 0;
   final presenter = Modular.get<ListMoviesPresenter>();
   @override
+  void initState() {
+    super.initState();
+    setState(() {
+      groupValue = MovieFilter.values.indexOf(widget.movieFilter);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(
       stream: presenter.isGetMoviesLoading,

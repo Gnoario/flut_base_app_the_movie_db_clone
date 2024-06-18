@@ -1,4 +1,5 @@
 import 'package:flut_base_app_the_movie_db_clone/app/data/repositories/repositories.dart';
+import 'package:flut_base_app_the_movie_db_clone/app/domain/models/enums/enums.dart';
 import 'package:flut_base_app_the_movie_db_clone/app/domain/usecases/usecases.dart';
 import 'package:flut_base_app_the_movie_db_clone/app/external/datasources/datasources.dart';
 import 'package:flut_base_app_the_movie_db_clone/app/presentation/presenters/dasboard_presenter/dashboard_presenter_impl.dart';
@@ -81,15 +82,16 @@ class AppModule extends Module {
     r.child(
       '/list-movies',
       child: (context) => ListMoviesPage(
-        filter:
-            kIsWeb ? r.args.queryParams['filter'] : r.args.data['movie_filter'],
+        filter: kIsWeb
+            ? EMovieFilter.fromString(r.args.queryParams['filter'])
+            : r.args.data['movie_filter'],
         query: kIsWeb ? r.args.queryParams['query'] : r.args.data['query'],
       ),
     );
     r.child(
       '/view-media',
       child: (context) => ViewMediaPage(
-        mediaItem: kIsWeb ? r.args.queryParams['media'] : r.args.data['media'],
+        mediaItem: r.args.data['media'],
       ),
     );
   }

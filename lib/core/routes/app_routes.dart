@@ -26,13 +26,19 @@ class AppRoutes {
     required MediaItemDto media,
   }) {
     return kIsWeb
-        ? Modular.to.navigate('/view-media/media=$media')
+        ? Modular.to.navigate('/view-media', arguments: {
+            'media': media,
+          })
         : Modular.to.pushNamed(
             '/view-media',
             arguments: {
               'media': media,
             },
           );
+  }
+
+  static goToDashboard() {
+    return kIsWeb ? Modular.to.navigate('/') : Modular.to.pushNamed('/');
   }
 
   static void pop<T extends Object>([T? result]) {
