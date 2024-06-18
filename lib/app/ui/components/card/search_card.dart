@@ -1,6 +1,7 @@
 import 'package:flut_base_app_the_movie_db_clone/app/ui/components/components.dart';
 import 'package:flut_base_app_the_movie_db_clone/core/theme/theme.dart';
 import 'package:flut_base_app_the_movie_db_clone/shared/shared.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SearchCard extends StatelessWidget {
@@ -33,6 +34,7 @@ class SearchCard extends StatelessWidget {
           Image.network(
             'https://image.tmdb.org/t/p/w500/$bannerPath',
             fit: BoxFit.fill,
+            width: double.infinity,
             height: 280,
             loadingBuilder: (context, child, loadingProgress) {
               if (loadingProgress == null) return child;
@@ -88,7 +90,7 @@ class SearchCard extends StatelessWidget {
               ),
               SizedBox(height: context.spacer.value.sm),
               SizedBox(
-                height: 50,
+                height: kIsWeb ? 40 : 50,
                 child: BasicField(
                   onFieldSubmitted: onFieldSubmitted,
                   onChanged: onChanged,

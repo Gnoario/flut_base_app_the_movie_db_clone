@@ -32,4 +32,15 @@ extension EMovieFilter on MovieFilter {
 
     return action[this] ?? '/popular';
   }
+
+  static MovieFilter fromString(String? value) {
+    final action = {
+      'popular': MovieFilter.popular,
+      'top_rated': MovieFilter.topRated,
+      'upcoming': MovieFilter.upcoming,
+      'now_playing': MovieFilter.nowPlaying,
+    };
+
+    return action[value] ?? MovieFilter.popular;
+  }
 }

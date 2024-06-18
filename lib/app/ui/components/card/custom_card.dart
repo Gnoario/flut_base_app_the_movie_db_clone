@@ -282,6 +282,7 @@ class CustomCard extends StatelessWidget {
             height: 380,
             child: Image.network(
               'https://image.tmdb.org/t/p/w500/$backdropPath',
+              width: double.infinity,
               fit: BoxFit.fill,
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;
