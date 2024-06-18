@@ -52,4 +52,13 @@ class _BrandSecondaryColors {
       Color.fromRGBO(1, 180, 228, 1),
     ],
   );
+  LinearGradient shadowGradient = const LinearGradient(
+    begin: Alignment.bottomLeft,
+    end: Alignment.topRight,
+    colors: [
+      Color.fromRGBO(31, 10, 10, 1),
+      Color.fromRGBO(31, 10, 10, 0.84),
+      Color.fromRGBO(31, 10, 10, 0.84),
+    ],
+  );
 }
