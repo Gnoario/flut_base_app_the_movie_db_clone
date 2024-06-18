@@ -12,7 +12,7 @@ class PaginatedMoviesMock {
     return PaginatedMediaDto(
       pagination: createPaginationMock(),
       media: List<MediaItemDto>.generate(
-        faker.randomGenerator.integer(10),
+        faker.randomGenerator.integer(10, min: 5),
         (index) => _moviesMock.createMovieMock(),
       ),
     );
@@ -64,7 +64,7 @@ class PaginatedMoviesMock {
     final pagination = createPaginationJson();
     return {
       'results': List<Map<String, dynamic>>.generate(
-        faker.randomGenerator.integer(10),
+        faker.randomGenerator.integer(10, min: 5),
         (index) => _moviesMock.createMovieJson(),
       ).toList(),
       ...pagination,
@@ -74,7 +74,7 @@ class PaginatedMoviesMock {
   Map<String, dynamic> createPaginatedMoviesJsonWithError() {
     return {
       'content': List<Map<String, dynamic>>.generate(
-        faker.randomGenerator.integer(10),
+        faker.randomGenerator.integer(10, min: 5),
         (index) => _moviesMock.createMovieJson(),
       ).toList(),
     };

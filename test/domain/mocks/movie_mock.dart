@@ -15,7 +15,7 @@ class MovieMock {
       posterPath: faker.image.image(),
       overview: faker.lorem.sentence(),
       genreIds: List<int>.generate(
-        faker.randomGenerator.integer(10),
+        faker.randomGenerator.integer(10, min: 5),
         (index) => faker.randomGenerator.integer(10),
       ),
       originalLanguage: faker.lorem.word(),
@@ -28,6 +28,16 @@ class MovieMock {
 
   DateTime createRandomReleaseDate() {
     return faker.date.dateTime();
+  }
+
+  List<MediaItemDto> createMoviesMockList() {
+    return List<MediaItemDto>.generate(
+      faker.randomGenerator.integer(
+        10,
+        min: 5,
+      ),
+      (index) => createMovieMock(),
+    );
   }
 
   MediaType createRandomMediaType() {
@@ -59,7 +69,7 @@ class MovieMock {
       'poster_path': faker.image.image(),
       'overview': faker.lorem.sentence(),
       'genre_ids': List<int>.generate(
-        faker.randomGenerator.integer(10),
+        faker.randomGenerator.integer(10, min: 5),
         (index) => faker.randomGenerator.integer(10),
       ),
       'original_language': faker.lorem.word(),
