@@ -3,10 +3,11 @@ import 'package:flut_base_app_the_movie_db_clone/app/domain/models/dtos/media_it
 import '../../enums/enums.dart';
 
 class PersonDto extends MediaItemDto {
-  final String knownForDepartment;
-  final String profilePath;
-  final Gender gender;
+  final String? knownForDepartment;
+  final String? profilePath;
+  final Gender? gender;
   final List<MediaItemDto> knownFor;
+  final String? character;
 
   PersonDto({
     required super.id,
@@ -19,20 +20,22 @@ class PersonDto extends MediaItemDto {
     required this.knownForDepartment,
     required this.profilePath,
     required this.knownFor,
+    this.character,
   });
 
   factory PersonDto.fromJson(Map<String, dynamic> json) {
     return PersonDto(
       id: BigInt.from(json['id']),
       originalName: json['original_name'],
-      mediaType: EMediaType.fromString(json['media_type']),
+      mediaType: MediaType.person,
       adult: json['adult'],
       name: json['name'],
       popularity: json['popularity'],
+      character: json['character'],
       gender: EGender.fromInt(json['gender']),
       knownForDepartment: json['known_for_department'],
       profilePath: json['profile_path'],
-      knownFor: (json['known_for'] as List)
+      knownFor: (json['known_for'] as List? ?? [])
           .map((e) => MediaItemDto.fromJson(e))
           .toList(),
     );
@@ -47,7 +50,7 @@ class PersonDto extends MediaItemDto {
       'adult': adult,
       'name': name,
       'popularity': popularity,
-      'gender': gender.index,
+      'gender': gender?.index,
       'known_for_department': knownForDepartment,
       'profile_path': profilePath,
       'known_for': knownFor.map((e) => e.toJson()).toList(),

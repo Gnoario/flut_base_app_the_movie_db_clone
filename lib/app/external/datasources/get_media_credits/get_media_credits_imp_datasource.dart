@@ -12,6 +12,8 @@ class GetMediaCreditsImpDatasource implements GetMediaCreditsDatasource {
     required String query,
   }) async {
     final result = await _clientHttps.get(query);
-    return (result.data as List).map((e) => PersonDto.fromJson(e)).toList();
+    return ((result.data['cast'] as List?) ?? [])
+        .map((e) => PersonDto.fromJson(e))
+        .toList();
   }
 }
