@@ -18,7 +18,12 @@ extension EGender on Gender {
     return action[this] ?? '';
   }
 
-  static Gender fromInt(int value) {
-    return Gender.values[value];
+  static Gender fromInt(int? value) {
+    final action = {
+      1: Gender.male,
+      2: Gender.female,
+    };
+
+    return action[value] ?? Gender.male;
   }
 }
