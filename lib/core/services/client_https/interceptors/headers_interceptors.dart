@@ -11,5 +11,6 @@ class HeadersInterceptors extends InterceptorsWrapper {
     return handler.next(options);
   }
 
-  String get _token => 'ApiTokenHere';
+  String get _token =>
+      'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZWYzZjExNzFlNWE1YjUzNWVmNGVmZDIzOWE3YjRkMCIsInN1YiI6IjY2NmM1ODAyZTk4MTA1ZTQyNzM4NjQ3NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LRtHQUNGbR0iD5S0cWXNDmuwUtoVdduVYqEYCSIufzc';
 }
